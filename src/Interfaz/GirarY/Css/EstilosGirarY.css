@@ -1,0 +1,47 @@
+.divGirarControles{
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    bottom: 1%;
+    right: 21%;
+
+}
+.divGirar{
+    width: 40%;
+    height: 40%;
+    position: absolute;
+    background-color: #1e2631;
+    border-radius: 50%;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid #0b3c5d;
+    color: #3189c3;
+    transition: background-color .5s;
+}
+.divGirar:hover{
+    background-color: #3189c3;
+    color: #0b3c5d;
+}
+.divGirarY{
+    left: 0%;
+}
+.divGirarX{
+    top: 50%;
+}
+.divGirarR{
+    left: 50%;
+}
+.divGirarZ{
+    top: 50%;
+    left: 50%;
+    
+}
+.divControlesTexto{
+    font-weight: bold;
+    padding: 0;
+    border: 0;
+    margin: 0;
+    
+    user-select: none;
+}

@@ -1,0 +1,17 @@
+.divBotonAgregar{
+    width: 90%;
+    height: 50%;
+    border-radius: 17px;
+    border: 3px solid #d9b310;
+    background-color: #1e2631;
+    justify-items: center;
+    align-items: center;
+    text-align: center;
+    display: grid;
+    font-weight: bold;
+    color: #d9b310;
+}
+.divBotonAgregarTexto{
+    margin: 0;
+    user-select: none;
+}

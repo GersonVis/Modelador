@@ -1,0 +1,29 @@
+.divCarasLista{
+    width: 100%;
+    height: 100%;
+    overflow-y:auto;
+}
+.divCarasLista::-webkit-scrollbar {
+    width: 10px;     /* Tamaño del scroll en vertical */
+    height: 10px;    /* Tamaño del scroll en horizontal */
+}
+.divCarasLista::-webkit-scrollbar-thumb {
+    background: #409ad2;
+    border-radius: 4px;
+}
+.divCarasLista::-webkit-scrollbar-thumb:hover {
+    background: #328bc3;
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.divCarasLista::-webkit-scrollbar-thumb:active {
+    background-color: #227bb3;
+}
+.divCarasLista::-webkit-scrollbar-track {
+    background: #d8b410;
+    border-radius: 4px;
+}
+.divCarasLista.container::-webkit-scrollbar-track:hover,
+.divCarasLista::-webkit-scrollbar-track:active {
+  background: #c8c420;
+}

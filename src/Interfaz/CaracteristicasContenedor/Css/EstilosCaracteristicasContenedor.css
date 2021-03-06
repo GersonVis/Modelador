@@ -1,0 +1,49 @@
+.divCaracteristicasContenedor{
+    height: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5%;
+}
+.divCaractContenedorCentro{
+    height: 92%;
+    width: 92%;
+    border-radius: 17px;
+    background: #328bc3;
+    display: flex;
+}
+.CaractSeleccionado{
+    border: 3px solid #d8b410;
+    background-color: #328bc3;
+}
+.divCaractConteDatos{
+    width: 100%;
+    height: 100%;
+}
+.divCaracConElimintar{
+    width: 30px;
+    height: 30px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    border-radius: 50%;
+    background: #1e2631;
+}
+.divCaracConElimintarBot{
+    width: 90%;
+    height: 90%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+.pTexto{
+    margin: 0;
+    font-weight: bold;
+    text-align: center;
+    color: #d8b410;
+    user-select: none;
+}
+.divCaractConteDatosPadre{
+    display: contents;
+}

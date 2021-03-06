@@ -1,0 +1,18 @@
+.divPrincipal{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    display: flex;
+}
+.divPrincipalTrabajo{
+    height: 100%;
+    width: 80%;
+    
+}
+.divPrincipalControles{
+    width: 20%;
+    height: 100%;
+    left: 0;
+    
+}

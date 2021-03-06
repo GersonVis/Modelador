@@ -1,0 +1,87 @@
+#bodPadre{
+    height: 100%;
+    width: 80%;
+    background: #89cefd;
+    position: absolute;
+    overflow: hidden;
+}
+.clBase{
+    position: absolute;
+    width: 20%;
+    height: 50%;
+    top: 25%;
+    perspective: 1500px;
+    
+}
+.clDentro{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin: auto;
+    justify-content: center;
+    transform-style: preserve-3d;
+    transform: rotateY(45deg);
+}
+.clFinal{
+    position: relative;
+    background: #fafbff;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+@keyframes Retroceder{
+    50%{
+        transform: translateZ(-500px) rotateX(-30deg);
+      }
+    100%{
+        transform: translateZ(-500px) rotateX(0deg);
+      }
+}
+@keyframes Regresar{
+    50%{
+        transform: translateZ(0px) rotateX(30deg);
+      }
+    100%{
+        transform: rotateX(0deg);
+      }
+}
+.clBotCentro{
+    width: 50px;
+    height: 50px;
+    background: #9398fe;
+    border-radius: 50%;
+    position: absolute;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    transform: translateZ(0px);
+}
+@keyframes AlejarBot{
+   100%{background: red;}
+}
+@keyframes AcercarBot{
+   100%{background: yellow;}
+}
+#idBase1{
+left: 40%;
+}
+#idBase2{
+left: 42.5%;
+}
+#idBase3{
+right: 22.5%;
+}
+#idBoton1{
+   background: rgb(230, 211, 108);
+}
+#idBoton2{
+    background: rgb(245, 154, 196);
+}
+#idBoton3{
+    background: rgb(144, 148, 244);
+}
