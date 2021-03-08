@@ -15,6 +15,7 @@ class ProviderCaraContenedor extends React.Component {
         anguloY: 1,
         anguloZ: 0,
     };
+    selecAnterior;
     constructor(props) {
         super(props);
         this.AgregarCara = (keyUn) => {
@@ -37,9 +38,11 @@ class ProviderCaraContenedor extends React.Component {
                     anguloX: 0,
                     anguloZ: 0,
                     visible: 'visible',
+                    Activado: '1',
                 }
             );
-            console.log(this.CarasLista);
+
+            //  console.log(this.CarasLista);
             this.setState((state) => ({
                 disponible: this.disponible++,
                 caras: this.caras,
@@ -47,9 +50,19 @@ class ProviderCaraContenedor extends React.Component {
                 CarasDatos: this.CarasDatos,
             }));
         }
+        this.SeleccionarCara = (idUn, cambiarA) => {
+            if (this.selecAnterior != null) {
+                this.CarasDatos.get(this.selecAnterior).activado = '0';
+            }
+            this.CarasDatos.get(idUn).Activado = cambiarA;
+            this.selecAnterior = idUn;
+            this.setState(() => ({
+                CarasDatos: this.CarasDatos,
+            }));
+        }
         this.Seleccionar = (elementoSeleccionado) => {
             this.seleccionado = elementoSeleccionado;
-            console.log(elementoSeleccionado);
+            //console.log(elementoSeleccionado);
             this.setState((state) => ({
                 seleccionado: this.seleccionado
             }));
@@ -82,7 +95,7 @@ class ProviderCaraContenedor extends React.Component {
             }));
         };
         this.CambiarAngulos = (x, y, z) => {
-            console.log(y)
+            //  console.log(y)
             this.setState((state) => (
                 {
                     angulos: {
@@ -94,32 +107,43 @@ class ProviderCaraContenedor extends React.Component {
             ));
         }
         this.ActualizarDatos = (id, translateX, translateY, translateZ, anguloX, anguloY, anguloZ) => {
-            this.CarasDatos.set(id, {
-                translateX: translateX,
-                translateY: translateY,
-                translateZ: translateZ,
-                anguloY: anguloY,
-                anguloX: anguloX,
-                anguloZ: anguloZ,
-                visible: 'visible',
-                activado: '0',
-            });
+            this.CarasDatos.get(id).translateX = translateX;
+            this.CarasDatos.get(id).translateY = translateY;
+            this.CarasDatos.get(id).translateZ = translateZ;
+            this.CarasDatos.get(id).anguloX = anguloX;
+            //console.log(translateX);
             this.setState((state, props) => ({
                 CarasDatos: this.CarasDatos
             }))
         }
         this.ActualizarX = (keUn, translateX) => {
-            this.CarasDatos.get(keUn).translateX=translateX;
-            this.CarasDatos.get(keUn).activado='1';
+            this.CarasDatos.get(keUn).translateX = translateX;
+            this.CarasDatos.get(keUn).activado = '1';
             this.setState((state, props) => ({
                 CarasDatos: this.CarasDatos
             }))
-            
+
         }
         this.Eliminar = (idUn) => {
-            this.CarasDatos.get(idUn).visible='hidden';
-                    
+            this.CarasDatos.get(idUn).visible = 'hidden';
         }
+        this.CambiosCara = (idUn, NuevoValor, intOp) => {
+            switch (intOp) {
+                case 0:
+                    this.CarasDatos.get(idUn).translateX = NuevoValor;
+                    this.setState((state, props) => ({
+                        CarasDatos: this.CarasDatos,
+                    }));
+                    break;
+                case 1:
+                    this.CarasDatos.get(idUn).anguloX = NuevoValor;
+                    this.setState((state, props) => ({
+                        CarasDatos: this.CarasDatos,
+                    }));
+                    break;
+            }
+        }
+
         this.state = {
             caras: this.caras,
             CarasLista: this.CarasLista,
@@ -134,9 +158,11 @@ class ProviderCaraContenedor extends React.Component {
             ActualizarDatos: this.ActualizarDatos,
             ActualizarX: this.ActualizarX,
             Eliminar: this.Eliminar,
+            SeleccionarCara: this.SeleccionarCara,
             RotarY: this.RotarY,
             RotarX: this.RotarX,
             RotarZ: this.RotarZ,
+            CambiosCara: this.CambiosCara,
         }
     }
     render() {

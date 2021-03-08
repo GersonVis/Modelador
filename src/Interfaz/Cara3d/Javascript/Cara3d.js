@@ -10,6 +10,7 @@ class Cara3d extends React.Component {
     pulsadoCom = 0;
     transX = 0;
     transY = 0;
+    cambiados=0;
     classEstilo = 'divCara3D Cara3DSeleccionado';
     constructor(props) {
         super(props);
@@ -18,6 +19,7 @@ class Cara3d extends React.Component {
         this.evSoltado = this.evSoltado.bind(this);
         this.evPresionado = this.evPresionado.bind(this);
         this.evAfuera = this.evAfuera.bind(this);
+        this.evSeleccionar = this.evSeleccionar.bind(this);
         this.state = {
             classEstilo: this.classEstilo,
             colorFondo: 'red',
@@ -29,6 +31,9 @@ class Cara3d extends React.Component {
             transY: 0,
         }
     }
+    evSeleccionar(ev) {
+        this.context.SeleccionarCara(this.keyNueva, '1');
+    }
     evSoltado(e) {
         this.pulsadoCom = 0;
         this.transX = this.transX + (e.clientX - this.state.posIX);
@@ -38,6 +43,7 @@ class Cara3d extends React.Component {
         }))
     }
     evPulsado(e) {
+        this.context.SeleccionarCara(this.keyNueva, '1');
         this.pulsadoCom = 1;
         this.context.Seleccionar(this.keyNueva);
         this.setState((state, props) => ({
@@ -48,14 +54,14 @@ class Cara3d extends React.Component {
     }
     evPresionado(e) {
         if (this.pulsadoCom === 1) {
-            this.context.ActualizarDatos(this.keyNueva, this.state.x,
-                this.state.y, 0, 0, 0, 0);
             this.setState(function (state, props) {
                 return {
-                    x: this.transX + (e.clientX - this.state.posIX)+0,
-                    y: this.transY + (e.clientY - this.state.posIY)+0,
+                    x: this.transX + (e.clientX - this.state.posIX),
+                    y: this.transY + (e.clientY - this.state.posIY),
                 }
             });
+            this.context.ActualizarDatos(this.keyNueva, this.state.x,
+                this.state.y, 0, 0, 0, 0);
         }
     }
     evAfuera() {
@@ -64,21 +70,45 @@ class Cara3d extends React.Component {
     render() {
         const { x, y, evMover } = this.state;
         const datos = this.context.CarasDatos.get(this.keyNueva);
-      
-        return (<div>
-            {datos.visible != 'hidden' ?
-                <div
-                   
+        if(datos.visible!='hidden'){
+            if (datos.Activado == '2') { 
+                this.transX=datos.translateX;
+                this.state.x=datos.translateX;
+                    return(< div
+                        onMouseDown={this.evPulsado}
+                        onMouseMove={this.evPresionado}
+                        onMouseUp={this.evSoltado}
+                        onMouseOut={this.evAfuera}
+                        id={this.keyNueva}
+                        key={this.keyNueva}
+                        className={this.context.seleccionado == this.keyNueva ? this.state.classEstilo : 'divCara3D'}
+                        style={{
+                            transform: 'translateY(' + datos.translateY + 
+                            'px) translateX(' + datos.translateX + 'px)'+
+                            'rotateX(' + datos.anguloX + 'deg)'
+                        }
+                        }>
+                    </div >);
+            } else {
+              //  console.log(this.transX);
+               // console.log(this.transY);
+               this.cambiados=1;
+                return (<div
+                    onMouseDown={this.evPulsado}
+                    onMouseMove={this.evPresionado}
+                    onMouseUp={this.evSoltado}
+                    onMouseOut={this.evAfuera}
                     id={this.keyNueva}
                     key={this.keyNueva}
                     className={this.context.seleccionado == this.keyNueva ? this.state.classEstilo : 'divCara3D'}
                     style={{
-                        transform: 'translateY(' + datos.translateY + 'px) translateX(' + datos.translateX + 'px)',
-                    }}
-                >
-                </div> : <div></div>}
-        </div>
-        );
+                        transform: 'translateY(' + y + 'px) translateX(' + x + 'px)',
+                    }}>
+                </div>);
+            }    
+        }else{
+            return(<div></div>);
+        }
     }
 }
 export default Cara3d;
