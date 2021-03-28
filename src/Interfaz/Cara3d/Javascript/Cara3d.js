@@ -71,7 +71,7 @@ class Cara3d extends React.Component {
         const { x, y, evMover } = this.state;
         const datos = this.context.CarasDatos.get(this.keyNueva);
         if(datos.visible!='hidden'){
-            if (datos.Activado == '2') { 
+            if (datos.Activado == '2'){ 
                 this.transX=datos.translateX;
                 this.state.x=datos.translateX;
                     return(< div
@@ -90,7 +90,7 @@ class Cara3d extends React.Component {
                         }>
                     </div >);
             } else {
-              //  console.log(this.transX);
+               //  console.log(this.transX);
                // console.log(this.transY);
                this.cambiados=1;
                 return (<div

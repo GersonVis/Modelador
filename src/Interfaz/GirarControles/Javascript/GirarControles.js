@@ -1,7 +1,7 @@
 import React from 'react';
 import '../Css/EstilosGirarY.css'
 import ProviderCara from '../../../Providers/ProviderCara/ProviderCara';
-class GirarY extends React.Component {
+class GirarControles extends React.Component {
     static contextType = ProviderCara;
     anguloY = 0;
     anguloX = 0;
@@ -46,27 +46,15 @@ class GirarY extends React.Component {
     render() {
         return (
             <div className="divGirarControles">
-                <div className="divGirar divGirarY"
-                    onClick={this.evClickY}
-                    onMouseDown={this.evDown}>
-                    <p className="divControlesTexto">Y</p>
-                </div>
                 <div className="divGirar divGirarR"
                     onClick={this.evRelojGirar}
                   >
                     <p className="divControlesTexto">R</p>
                 </div>
-                <div className="divGirar divGirarX"
-                    onClick={this.evClickX}>
-                    <p className="divControlesTexto">X</p>
-                </div>
-                <div className="divGirar divGirarZ"
-                    onClick={this.evClickZ}>
-                    <p className="divControlesTexto">Z</p>
-                </div>
+                
             </div>
 
         );
     }
 }
-export default GirarY;
+export default GirarControles;

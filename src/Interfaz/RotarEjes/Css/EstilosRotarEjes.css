@@ -1,0 +1,31 @@
+.divGirarCara{
+   top: 93%;
+   width: 10%;
+   height: 10%;
+   left: 35%;
+   position: absolute;
+   display: flex;
+}
+.divGirarBotones{
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    display: grid;
+    background-color: #0b3c5d;
+    width: 30px;
+    height: 30px;
+    margin: 1px;
+    transition: background-color .5s;
+    border: 1px solid black;
+}
+.pGirarTexto{
+    margin: 0;
+    border: 0;
+    text-align: center;
+    user-select: none;
+    color: #d9b310;
+
+}
+.divGirarBotones:active{
+     background-color: #3189c3;
+}

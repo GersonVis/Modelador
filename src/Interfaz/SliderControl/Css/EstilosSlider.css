@@ -1,0 +1,21 @@
+.divSlider{
+    background-color: red;
+    border-radius: 13px;
+    background-color: rgb(128, 168, 241);
+    padding-left: 23px;
+    padding-right: 23px;
+    width: 230px;
+}
+.slider.padre{
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    height: 30px;
+}
+.divBarra{
+    display: grid;
+    border-radius: 13px;
+    background-color: rgb(128, 168, 241);
+    grid-template-columns: 30px 180px 30px;
+}

@@ -5,13 +5,13 @@
     position: absolute;
     overflow: hidden;
 }
+
 .clBase{
     position: absolute;
     width: 20%;
     height: 50%;
     top: 25%;
     perspective: 1500px;
-    
 }
 .clDentro{
     position: relative;
