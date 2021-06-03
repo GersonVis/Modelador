@@ -5,6 +5,15 @@
     perspective: 1500px;
     position: absolute;
     background: #0b3c5d;
+    animation-name: caraAni;
+    animation-duration: 1s;
+    animation-direction: reverse;
+}
+@keyframes caraAni {
+    
+    to{
+       transform: rotateZ(460deg);
+    }
 }
 .Cara3Dpresionado{
     background: #1e74ad;

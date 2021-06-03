@@ -31,3 +31,9 @@
     grid-template-columns: 33% 33% 33%;
     grid-template-rows: 100%;
 }
+.caracteristicas .sliders{
+    flex-direction: column;
+    justify-content: space-between;
+    /* background-color: red; */
+    display: flex;
+}

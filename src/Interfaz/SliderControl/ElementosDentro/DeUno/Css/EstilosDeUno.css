@@ -1,0 +1,10 @@
+.DeUnoIcon{
+  color: #ffffff;
+  transition: color 1s;
+}
+.DeUnoIcon:hover{
+    color: #89cefd;    
+}
+.DeUnoIcon:active{
+    color: #1e2631;    
+}

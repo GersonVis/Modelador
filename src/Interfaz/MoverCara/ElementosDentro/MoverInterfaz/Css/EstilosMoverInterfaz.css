@@ -1,0 +1,25 @@
+.MoverInt{
+    width: 100%;
+    height: 100%;
+  
+    display: flex;
+    flex-direction: row;
+}
+.MoverInt.Tirador{
+    background-color: row;
+    width: 40%;
+    
+}
+.MoverInt.Texto{
+    width: 20%;
+}
+.MoverInt.Tirador.Ralla{
+    width: 0px;
+}
+.MoverInt.Tirador.Circulo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: relative;
+}

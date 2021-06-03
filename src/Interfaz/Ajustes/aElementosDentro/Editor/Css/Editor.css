@@ -1,0 +1,59 @@
+.Editor{
+    width: 100%;
+    height: 100%;
+}
+.EdivTextArea{
+  width: 100%;
+  height: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #89cefd;
+}
+.EdivTitulo{
+  width: 100%;
+  height: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.EdivTextAreaP{
+   width: 50%;
+   height: 90%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   overflow: hidden;
+}
+.EdivAccion{
+  width: 100%;
+  height: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1e2631;
+}
+.EAccion{
+    width: 40%;
+    height: 40px;
+    text-align: center;
+    background: #73c0de;
+    border-radius: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    
+}
+.EAccion:active{
+  background-color: #5a94ac;
+}
+.Editor.Padre{
+    display: flex;
+    flex-direction: column;
+}
+.ETextArea{
+    width: 60%;
+    height: 90%;
+    border-radius: 13px;
+}

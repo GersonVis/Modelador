@@ -4,6 +4,7 @@ import '../Css/EstilosPrincipal.css';
 import RotarEjes from '../../RotarEjes/Javascript/RotarEjes.js'
 import SliderControl from '../../SliderControl/Javascript/SliderControl.js';
 import ProviderCara from '../../../Providers/ProviderCara/ProviderCara.js';
+import MoverContenedor from '../../MoverCara/Javascript/MoverContenedor.js';
 class Principal extends React.Component {
     static contextType = ProviderCara;
     render() {
@@ -25,6 +26,7 @@ class Principal extends React.Component {
                                 context.RotarZ(value);
                             }}></SliderControl>
                     </div>
+                    <MoverContenedor></MoverContenedor>
                 </div>
                 <div className="divPrincipalControles">
                    {this.props.Controles}

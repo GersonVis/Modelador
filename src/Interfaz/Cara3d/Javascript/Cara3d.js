@@ -70,8 +70,8 @@ class Cara3d extends React.Component {
     render() {
         const { x, y, evMover } = this.state;
         const datos = this.context.CarasDatos.get(this.keyNueva);
-        if(datos.visible!='hidden'){
-            if (datos.Activado == '2'){ 
+        if(datos.visible!=0){
+            if (datos.Activado == true){ 
                 this.transX=datos.translateX;
                 this.state.x=datos.translateX;
                     return(< div
@@ -83,9 +83,15 @@ class Cara3d extends React.Component {
                         key={this.keyNueva}
                         className={this.context.seleccionado == this.keyNueva ? this.state.classEstilo : 'divCara3D'}
                         style={{
+                            backgroundColor: 'rgb('+datos.red+','+datos.green+','+datos.blue+')',
+                            width: datos.ancho,
+                            height: datos.alto,
                             transform: 'translateY(' + datos.translateY + 
                             'px) translateX(' + datos.translateX + 'px)'+
-                            'rotateX(' + datos.anguloX + 'deg)'
+                            'translateZ(' + datos.translateZ + 'px)'+
+                            'rotateX(' + datos.anguloX + 'deg)'+
+                            'rotateY(' + datos.anguloY + 'deg)'+
+                            'rotateZ(' + datos.anguloZ + 'deg)'
                         }
                         }>
                     </div >);
@@ -93,17 +99,8 @@ class Cara3d extends React.Component {
                //  console.log(this.transX);
                // console.log(this.transY);
                this.cambiados=1;
-                return (<div
-                    onMouseDown={this.evPulsado}
-                    onMouseMove={this.evPresionado}
-                    onMouseUp={this.evSoltado}
-                    onMouseOut={this.evAfuera}
-                    id={this.keyNueva}
-                    key={this.keyNueva}
-                    className={this.context.seleccionado == this.keyNueva ? this.state.classEstilo : 'divCara3D'}
-                    style={{
-                        transform: 'translateY(' + y + 'px) translateX(' + x + 'px)',
-                    }}>
+                return (<div>
+                   
                 </div>);
             }    
         }else{
@@ -112,3 +109,13 @@ class Cara3d extends React.Component {
     }
 }
 export default Cara3d;
+/* onMouseDown={this.evPulsado}
+                    onMouseMove={this.evPresionado}
+                    onMouseUp={this.evSoltado}
+                    onMouseOut={this.evAfuera}
+                    id={this.keyNueva}
+                    key={this.keyNueva}
+                    className={this.context.seleccionado == this.keyNueva ? this.state.classEstilo : 'divCara3D'}
+                    style={{
+                        transform: 'translateY(' + y + 'px) translateX(' + x + 'px)',
+                    }}>*/

@@ -15,11 +15,37 @@ class ProviderCaraContenedor extends React.Component {
         anguloY: 1,
         anguloZ: 0,
     };
+    verMenu=false;
+    datosSeleccionado;
     selecAnterior;
+    ajustesColor = false;
     constructor(props) {
         super(props);
+        this.AgregarCaraDatos = (keyUn, datos) => {
+            // console.log(keyUn);
+            this.CarasLista.set(
+                keyUn,
+                <CaracteristicasContenedor keyNueva={keyUn} />
+            );
+            this.caras.set(
+                keyUn,
+                <Cara3d keyNueva={keyUn} />
+            )
+            this.CarasDatos.set(
+                keyUn,
+                datos
+            );
+
+            console.log(this.CarasDatos);
+            this.setState((state) => ({
+                disponible: this.disponible++,
+                caras: this.caras,
+                CarasLista: this.CarasLista,
+                CarasDatos: this.CarasDatos,
+            }));
+        }
         this.AgregarCara = (keyUn) => {
-            console.log(keyUn);
+            // console.log(keyUn);
             this.CarasLista.set(
                 keyUn,
                 <CaracteristicasContenedor keyNueva={keyUn} />
@@ -37,12 +63,19 @@ class ProviderCaraContenedor extends React.Component {
                     anguloY: 0,
                     anguloX: 0,
                     anguloZ: 0,
-                    visible: 'visible',
-                    Activado: '1',
+                    ancho: 40,
+                    alto: 40,
+                    visible: 1,
+                    Activado: 1,
+                    ajustesColor: 0,
+                    red: 30,
+                    green: 38,
+                    blue: 49,
                 }
             );
-
-            //  console.log(this.CarasLista);
+            console.log('final');
+            console.log(this.CarasDatos);
+            console.log('final');
             this.setState((state) => ({
                 disponible: this.disponible++,
                 caras: this.caras,
@@ -62,7 +95,9 @@ class ProviderCaraContenedor extends React.Component {
         }
         this.Seleccionar = (elementoSeleccionado) => {
             this.seleccionado = elementoSeleccionado;
-            //console.log(elementoSeleccionado);
+            this.datosSeleccionado = this.CarasDatos.get(elementoSeleccionado);
+            //console.log(this.datosSeleccionado);
+            this.state.datosSeleccionado = this.datosSeleccionado;
             this.setState((state) => ({
                 seleccionado: this.seleccionado
             }));
@@ -125,7 +160,10 @@ class ProviderCaraContenedor extends React.Component {
 
         }
         this.Eliminar = (idUn) => {
-            this.CarasDatos.get(idUn).visible = 'hidden';
+            this.CarasDatos.get(idUn).visible = 0;
+            this.setState((state, props) => ({
+
+            }));
         }
         this.CambiosCara = (idUn, NuevoValor, intOp) => {
             switch (intOp) {
@@ -143,8 +181,131 @@ class ProviderCaraContenedor extends React.Component {
                     break;
             }
         }
+        this.RotarCaraX = (id, valor) => {
+            this.CarasDatos.get(id).anguloX = valor;
+            this.CarasDatos.get(id).activado = '1';
+            this.setState((state, props) => ({
+                CarasDatos: this.CarasDatos
+            }))
+        }
+        this.RotarCaraY = (id, valor) => {
+            this.CarasDatos.get(id).anguloY = valor;
+            this.CarasDatos.get(id).activado = '1';
+            this.setState((state, props) => ({
+                CarasDatos: this.CarasDatos
+            }))
+        }
+        this.RotarCaraZ = (id, valor) => {
+            this.CarasDatos.get(id).anguloZ = valor;
+            this.CarasDatos.get(id).activado = '1';
+            this.setState((state, props) => ({
+                CarasDatos: this.CarasDatos
+            }))
+        }
 
+        this.MoverX = (value) => {
+            var dat = this.CarasDatos.get(this.seleccionado);
+            dat.translateX += value;
+            this.setState((state, props) => ({
+                CarasDatos: this.CarasDatos
+            }))
+        }
+        this.MoverY = (value) => {
+            var dat = this.CarasDatos.get(this.seleccionado);
+            dat.translateY += value;
+            this.setState((state, props) => ({
+                CarasDatos: this.CarasDatos
+            }))
+        }
+        this.MoverZ = (value) => {
+            var dat = this.CarasDatos.get(this.seleccionado);
+            dat.translateZ += value;
+            this.setState((state, props) => ({
+                CarasDatos: this.CarasDatos
+            }))
+        }
+        this.CambiarAncho = (value) => {
+            var dat = this.CarasDatos.get(this.seleccionado);
+            if (dat.ancho >= 0 || value > 0) {
+                dat.ancho += value;
+                this.setState((state, props) => ({
+                    CarasDatos: this.CarasDatos
+                }))
+            } else {
+                if (dat.ancho > 0) {
+                    dat.ancho += value;
+                    this.setState((state, props) => ({
+                        CarasDatos: this.CarasDatos
+                    }))
+                }
+
+            }
+
+        }
+        this.CambiarAlto = (value) => {
+            var dat = this.CarasDatos.get(this.seleccionado);
+            if (dat.alto >= 0 || value > 0) {
+                dat.alto += value;
+                this.setState((state, props) => ({
+                    CarasDatos: this.CarasDatos
+                }))
+            } else {
+                if (dat.alto > 0) {
+                    dat.alto += value;
+                    this.setState((state, props) => ({
+                        CarasDatos: this.CarasDatos
+                    }))
+                }
+
+            }
+
+        }
+        this.CambiarColor = (value) => {
+            var dat = this.CarasDatos.get(this.seleccionado);
+            dat.backgroundColor = value;
+            this.setState((state, props) => ({
+                CarasDatos: this.CarasDatos
+            }))
+        }
+        this.AjustesColor = (id, value) => {
+            var dat = this.CarasDatos.get(id);
+            dat.ajustesColor = value;
+            this.setState((state, props) => ({
+
+            }))
+
+        }
+        this.CambiarRed = (id, value) => {
+            var dat = this.CarasDatos.get(id);
+            dat.red = value;
+            this.setState((state, props) => ({
+
+            }))
+        }
+        this.CambiarGreen = (id, value) => {
+            var dat = this.CarasDatos.get(id);
+            dat.green = value
+            this.setState((state, props) => ({
+
+            }))
+        }
+        this.CambiarBlue = (id, value) => {
+            var dat = this.CarasDatos.get(id);
+            dat.blue = value;
+            this.setState((state, props) => ({
+
+            }))
+        }
+        this.cambiarVerMenu=(valor)=>{
+            this.verMenu=valor;
+            console.log(valor);
+            this.setState((state, props) => ({
+                verMenu: this.verMenu
+            }))
+        }
         this.state = {
+            verMenu: this.verMenu,
+            ajustesColor: this.ajustesColor,
             caras: this.caras,
             CarasLista: this.CarasLista,
             disponible: this.disponible,
@@ -152,7 +313,9 @@ class ProviderCaraContenedor extends React.Component {
             keys: this.keys,
             angulos: this.angulos,
             seleccionado: this.seleccionado,
+            datosSeleccionado: this.datosSeleccionado,
             AgregarCara: this.AgregarCara,
+            AgregarCaraDatos: this.AgregarCaraDatos,
             Seleccionar: this.Seleccionar,
             CambiarAngulos: this.CambiarAngulos,
             ActualizarDatos: this.ActualizarDatos,
@@ -163,6 +326,20 @@ class ProviderCaraContenedor extends React.Component {
             RotarX: this.RotarX,
             RotarZ: this.RotarZ,
             CambiosCara: this.CambiosCara,
+            RotarCaraX: this.RotarCaraX,
+            RotarCaraY: this.RotarCaraY,
+            RotarCaraZ: this.RotarCaraZ,
+            MoverX: this.MoverX,
+            MoverY: this.MoverY,
+            MoverZ: this.MoverZ,
+            CambiarAncho: this.CambiarAncho,
+            CambiarAlto: this.CambiarAlto,
+            CambiarColor: this.CambiarColor,
+            AjustesColor: this.AjustesColor,
+            CambiarRed: this.CambiarRed,
+            CambiarGreen: this.CambiarGreen,
+            CambiarBlue: this.CambiarBlue,
+            cambiarVerMenu: this.cambiarVerMenu,
         }
     }
     render() {
